@@ -11,12 +11,14 @@ var app = new Vue({
   },
    created() {
     this.getItems();
+    
   },
     methods: {
     async getItems() {
       try {
         let response = await axios.get("/api/items");
         this.items = response.data;
+        this.items.sort((a, b) => (a.name > b.name) ? 1 : -1);
         return true;
       } catch (error) {
         console.log(error);
