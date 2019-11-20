@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+  <title>Bootleg Amazon</title>
+</head>
+
+<body>
+  <div id="admin" class="content">
+     <h1>Store Management</h1>
+    <div class="heading">
+      <h2>Add a Product</h2>
+    </div>
+    <div class="add">
+      <div class="form">
+        <p>Product Name: <input v-model="name">
+        </p>
+        <p>Price: <input type="number" min="0" max="1000000" v-model="addPrice">
+        </p>
+        <p>Image: <input type="file" name="photo" @change="fileChanged">
+        </p>
+        <button @click="upload">Add Product</button>
+      </div>
+      <div class="upload" v-if="addItem">
+        <h2>{{addItem.name}}</h2>
+        <img :src="addItem.path" />
+      </div>
+    </div>
+    <br>
+    <div class="heading">
+      <h2>Current Products</h2>
+    </div>
+    <div class="image" v-for="item in items">
+      <hr>
+      <button @click="deleteItem(item)">Remove</button>
+        {{item.name}}<br>Price: ${{item.price}}<br>Ordered: {{item.buys}}
+        <div class="crop">
+          <img class = "center" :src="item.path" />
+        </div>
+        <p>{{item.description}}</p>
+      </div>
+    <a href="/index.html">Home</a>
+    <p></p>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js" integrity="sha256-g+Q8DFAmG5+eyRPSydX0LY4TfjsL11XSDrIGerbbEdA=" crossorigin="anonymous"></script>
+  <script src="/admin.js"></script>
+</body>
+<footer>
+  
+</footer>
+
+</html>

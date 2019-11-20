@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+  <title>Bootleg Amazon</title>
+</head>
+
+<body>
+  <div class="header">
+    <div class="logo">
+    </div>
+    <div class="title">
+      <h1>Welcome to Bootleg Amazon</h1>
+    </div>
+  </div>
+  <div id="app" class="content">
+    <section >
+      <h2>Current Products:</h2>
+      <div class="image" v-for="item in items">
+        <div class="product">
+        <input type="checkbox" @click="addItem(item)" v-model="item.buyNow">
+        {{item.name}} - Price: ${{item.price}}<p></p>
+        <div class="crop">
+          <img class = "center" :src="item.path" />
+        </div>
+        </div>
+      </div>
+      <br>
+      <div class="break"><hr></div>
+      <button @click="purchase">Submit Purchase</button>
+      <div class="upload" v-if="submitted">
+        <h2>Your Shopping Cart:</h2>
+        <br>
+        <div class="product2">
+        <div class="image" v-for="pur in selected">
+        {{pur.name}} - Price: ${{pur.price}}
+        <div class="crop">
+          <img class = "center" :src="pur.path" />
+        </div>
+      </div>
+      </div>
+      <a href="/index.html">Make Another Purchase</a>
+      </div>
+  </div>
+  <div class="footer">
+    <a href="/admin.html">Admin</a>
+  </div>
+  <footer class="footer center bottomPadding">
+    <a href = "https://github.com/BYUCS260/lab-5-mongodb-Virgil-Librarius">github</a>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js" integrity="sha256-g+Q8DFAmG5+eyRPSydX0LY4TfjsL11XSDrIGerbbEdA=" crossorigin="anonymous"></script>
+  <script src="/script.js"></script>
+</body>
+
+</html>
